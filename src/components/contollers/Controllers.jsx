@@ -13,15 +13,26 @@ import {
   useContrast,
   useSaturation,
 } from '../../context/ControllersContext.jsx'
+import Typography from '@mui/material/Typography'
 
 const Controllers = () => {
   const { brightness, setBrightness } = useBrightness()
   const { contrast, setContrast } = useContrast()
   const { saturation, setSaturation } = useSaturation()
   const { blur, setBlur } = useBlur()
+
   return (
     <>
+      <Typography
+        id="modal-modal-title"
+        textAlign="center"
+        variant="h6"
+        component="h2"
+      >
+        Яркость
+      </Typography>
       <Stack
+        width={'100%'}
         spacing={2}
         direction="row"
         sx={{ mb: 1 }}
@@ -38,7 +49,16 @@ const Controllers = () => {
         />
         <LightModeOutlinedIcon />
       </Stack>
+      <Typography
+        id="modal-modal-title"
+        textAlign="center"
+        variant="h6"
+        component="h2"
+      >
+        Контрастность
+      </Typography>
       <Stack
+        width={'100%'}
         spacing={2}
         direction="row"
         sx={{ mb: 1 }}
@@ -55,7 +75,16 @@ const Controllers = () => {
         />
         <ContrastTwoToneIcon />
       </Stack>
+      <Typography
+        id="modal-modal-title"
+        textAlign="center"
+        variant="h6"
+        component="h2"
+      >
+        Насыщенность
+      </Typography>
       <Stack
+        width={'100%'}
         spacing={2}
         direction="row"
         sx={{ mb: 1 }}
@@ -72,7 +101,16 @@ const Controllers = () => {
         />
         <Brightness6Icon />
       </Stack>
+      <Typography
+        id="modal-modal-title"
+        textAlign="center"
+        variant="h6"
+        component="h2"
+      >
+        Резкость
+      </Typography>
       <Stack
+        width={'100%'}
         spacing={2}
         direction="row"
         sx={{ mb: 1 }}

@@ -1,0 +1,35 @@
+.controlsWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.controlIcons {
+  color: #777;
+  font-size: 50px;
+  transform: scale(0.9);
+}
+
+.controlIcons:hover {
+  color: #fff;
+  transform: scale(1);
+}
+
+.bottomIcons {
+  color: #fff;
+}
+
+.bottomIcons:hover {
+  color: #fff;
+}
+
+.volumeSlider {
+  width: 100%;
+}
