@@ -9,9 +9,9 @@ import {
 } from '../../context/ControllersContext.jsx'
 import { AppBar, Container, Toolbar, Typography } from '@mui/material'
 import PlayerControls from '../../components/contollers/PlayerControls.jsx'
-import video from '../../assets/38_serie_Pockemon_cut.mp4'
 
-const Player = () => {
+
+const Player = ({url}) => {
   const { brightness } = useBrightness()
   const { contrast } = useContrast()
   const { saturation } = useSaturation()
@@ -69,7 +69,7 @@ const Player = () => {
             ref={playerRef}
             width={'100%'}
             height={'100%'}
-            url={video}
+            url={url}
             playing={play}
             volume={volume}
             progressInterval={1000}
