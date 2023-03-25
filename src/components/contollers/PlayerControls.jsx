@@ -5,6 +5,7 @@ import '../../assets/PlayerControls.css'
 import TuneIcon from '@mui/icons-material/Tune'
 import CustomModal from '../modal/CustomModal.jsx'
 import BasicModal from '../modal/CustomModal.jsx'
+import BlindType from '../blindType/BlindType'
 
 const useStyles = {
   controlsWrapper: {
@@ -76,7 +77,7 @@ export default ({
           >
             Настройки
           </Button>
-          <BasicModal modal={open} handleClose={handleClose} />
+          <BasicModal modal={open} handleClose={handleClose}> <BlindType/></BasicModal>
         </Grid>
       </Grid>
 

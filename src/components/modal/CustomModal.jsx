@@ -18,7 +18,7 @@ const style = {
   p: 4,
 }
 
-export default function BasicModal({ modal, handleClose }) {
+export default function BasicModal({ children, modal, handleClose }) {
   return (
     <div>
       <Modal
@@ -28,6 +28,7 @@ export default function BasicModal({ modal, handleClose }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+          {children}
           <Controllers />
         </Box>
       </Modal>
