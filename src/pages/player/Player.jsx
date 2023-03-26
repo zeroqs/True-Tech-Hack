@@ -10,8 +10,7 @@ import {
 import { AppBar, Container, Toolbar, Typography } from '@mui/material'
 import PlayerControls from '../../components/contollers/PlayerControls.jsx'
 
-
-const Player = ({url}) => {
+const Player = ({ url }) => {
   const { brightness } = useBrightness()
   const { contrast } = useContrast()
   const { saturation } = useSaturation()
@@ -21,7 +20,6 @@ const Player = ({url}) => {
   const [progress, setProgress] = React.useState({})
   const [seeking, setSeeking] = React.useState(false)
   const playerRef = React.useRef(null)
-
   const changePlayMode = () => {
     setPlay(!play)
   }
@@ -29,11 +27,14 @@ const Player = ({url}) => {
     setVolume(value / 100)
   }
 
-  const handleSeekChange = (e, newValue) => {
-    setProgress({ ...progress, played: parseFloat(e.target.value / 100) })
+  const onProgress = (state) => {
     if (!seeking) {
-      setProgress({ ...progress, played: parseFloat(newValue / 100) })
+      setProgress({ ...progress, played: state.played })
     }
+  }
+
+  const handleSeekChange = (state, newValue) => {
+    setProgress({ ...progress, played: parseFloat(newValue / 100) })
   }
 
   const onSeekMouseDown = () => {
@@ -42,6 +43,7 @@ const Player = ({url}) => {
 
   const handleSeekMouseUp = (e, newValue) => {
     setSeeking(false)
+
     playerRef.current.seekTo(parseFloat(newValue / 100))
   }
 
@@ -72,7 +74,7 @@ const Player = ({url}) => {
             url={url}
             playing={play}
             volume={volume}
-            progressInterval={1000}
+            onProgress={onProgress}
           />
 
           <PlayerControls
@@ -80,7 +82,7 @@ const Player = ({url}) => {
             play={play}
             changeVolume={changeVolume}
             volume={volume}
-            progress={progress}
+            progress={progress.played}
             handleSeekChange={handleSeekChange}
             onSeekMouseDown={onSeekMouseDown}
             handleSeekMouseUp={handleSeekMouseUp}
