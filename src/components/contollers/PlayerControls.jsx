@@ -54,7 +54,6 @@ export default ({
   const [open, setOpen] = React.useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
-
   return (
     <div className="controlsWrapper">
       <Grid
@@ -77,7 +76,10 @@ export default ({
           >
             Настройки
           </Button>
-          <BasicModal modal={open} handleClose={handleClose}> <BlindType/></BasicModal>
+          <BasicModal modal={open} handleClose={handleClose}>
+            {' '}
+            <BlindType />
+          </BasicModal>
         </Grid>
       </Grid>
 
@@ -138,7 +140,7 @@ export default ({
             }}
             min={0}
             max={100}
-            value={progress.played * 100}
+            value={progress * 100 || 0}
             onChange={handleSeekChange}
             onChangeCommitted={handleSeekMouseUp}
             onMouseDown={onSeekMouseDown}
