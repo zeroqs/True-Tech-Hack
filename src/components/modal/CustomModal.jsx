@@ -4,6 +4,17 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Modal from '@mui/material/Modal'
 import Controllers from '../contollers/Controllers.jsx'
+import SelectConfig from '../select/Select.jsx'
+import BlindType from '../blindType/BlindType.jsx'
+import { Stack } from '@mui/material'
+import {
+  SetSetting,
+  useBlur,
+  useBrightness,
+  useContrast,
+  useSaturation,
+  useSettings,
+} from '../../context/ControllersContext.jsx'
 
 const style = {
   position: 'absolute',
@@ -18,7 +29,22 @@ const style = {
   p: 4,
 }
 
-export default function BasicModal({ children, modal, handleClose }) {
+export default function BasicModal({ modal, handleClose }) {
+  const [config, addObj, object] = SetSetting()
+  const [error, setError] = React.useState(false)
+
+  const changeConfig = () => {
+    addObj()
+    if (!object.configType) {
+      setError(true)
+    }
+  }
+  React.useEffect(() => {
+    if (object.configType) {
+      localStorage.setItem(`${object.configType}`, JSON.stringify(object))
+      setError(false)
+    }
+  }, [config])
   return (
     <div>
       <Modal
@@ -28,8 +54,24 @@ export default function BasicModal({ children, modal, handleClose }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          {children}
+          {error ? (
+            <h3 style={{ color: 'red' }}>Выберите конфигурацию</h3>
+          ) : (
+            <></>
+          )}
+          <SelectConfig />
+          <BlindType />
           <Controllers />
+          <Stack
+            direction="row"
+            paddingTop={2}
+            justifyContent="center"
+            spacing={2}
+          >
+            <Button onClick={changeConfig} variant="contained">
+              Сохранить
+            </Button>
+          </Stack>
         </Box>
       </Modal>
     </div>
