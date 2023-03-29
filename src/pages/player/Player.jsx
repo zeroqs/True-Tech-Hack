@@ -116,7 +116,7 @@ const Player = ({ url }) => {
               to="/safe-video"
             >
               <Button variant="contained" color="warning">
-                Видео без опасной сцены ( демо )
+                Видео без опасной сцены с субтитрами ( демо )
               </Button>
             </Link>
           </Grid>
