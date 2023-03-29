@@ -33,11 +33,16 @@ const Player = ({ url }) => {
   const { contrast, setContrast } = useContrast()
   const { saturation, setSaturation } = useSaturation()
   const { blur, setBlur } = useBlur()
-
-  const storage = JSON.parse(localStorage.getItem(configType))
   const [open, setOpen] = React.useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+  const [storage, setStorage] = React.useState({})
+  React.useEffect(() => {
+    const storage = JSON.parse(localStorage.getItem(configType))
+    if (storage) {
+      setStorage(storage)
+    }
+  }, [configType])
 
   const changePlayMode = () => {
     setPlay(!play)
@@ -77,7 +82,7 @@ const Player = ({ url }) => {
             }}
             to="/"
           >
-            <Typography variant="h6">React Video Player</Typography>
+            <Typography variant="h6">Code Wizards</Typography>
           </Link>
           <Grid>
             <Button
@@ -89,19 +94,6 @@ const Player = ({ url }) => {
               Настройки
             </Button>
             <BasicModal modal={open} handleClose={handleClose} />
-          </Grid>
-          <Grid>
-            <Link
-              style={{
-                color: 'inherit',
-                textDecoration: 'inherit',
-              }}
-              to="/player"
-            >
-              <Button variant="contained" color="warning">
-                Перейти в плеер
-              </Button>
-            </Link>
           </Grid>
         </Toolbar>
       </AppBar>

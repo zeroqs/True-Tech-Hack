@@ -7,6 +7,7 @@ const BlurContext = createContext(null)
 const BlindTypeContext = createContext(null)
 const SettingsContext = createContext(null)
 const ConfigTypesContext = createContext(null)
+const ConfigContext = createContext(null)
 
 export function CustomSettingsProvider({ children }) {
   const [brightness, setBrightness] = React.useState(100)
@@ -16,6 +17,7 @@ export function CustomSettingsProvider({ children }) {
   const [blindType, setBlindType] = React.useState('')
   const [configType, setConfigType] = React.useState('')
   const [settings, setSettings] = React.useState({})
+  const [config, setConfig] = React.useState({})
 
   return (
     <BrightnessContext.Provider value={{ brightness, setBrightness }}>
@@ -27,7 +29,9 @@ export function CustomSettingsProvider({ children }) {
                 <ConfigTypesContext.Provider
                   value={{ configType, setConfigType }}
                 >
-                  {children}
+                  <ConfigContext.Provider value={{ config, setConfig }}>
+                    {children}
+                  </ConfigContext.Provider>
                 </ConfigTypesContext.Provider>
               </BlindTypeContext.Provider>
             </SettingsContext.Provider>
@@ -40,6 +44,10 @@ export function CustomSettingsProvider({ children }) {
 
 export function useBrightness() {
   return useContext(BrightnessContext)
+}
+
+export function useConfigLocal() {
+  return useContext(ConfigContext)
 }
 
 export function useContrast() {

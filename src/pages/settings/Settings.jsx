@@ -1,15 +1,12 @@
 import React from 'react'
 import Player from '../player/Player.jsx'
+import url from '../../assets/Paris Morning Coffee Shop Ambience - Relaxing Jazz Bossa Nova Music for Good Mood Start the Day.webm'
 
 const Settings = () => {
   return (
     <div>
       <h1>Settings</h1>
-      <Player
-        url={
-          'https://test-videos.co.uk/vids/bigbuckbunny/webm/vp8/360/Big_Buck_Bunny_360_10s_1MB.webm'
-        }
-      />
+      <Player url={url} />
     </div>
   )
 }

@@ -12,6 +12,7 @@ import {
   useBlur,
   useBrightness,
   useConfig,
+  useConfigLocal,
   useContrast,
   useSaturation,
 } from '../../context/ControllersContext.jsx'
@@ -23,7 +24,7 @@ const Controllers = () => {
   const { saturation, setSaturation } = useSaturation()
   const { blur, setBlur } = useBlur()
   const { configType } = useConfig()
-  const [config, setConfig] = React.useState({})
+  const { config, setConfig } = useConfigLocal()
 
   const handleBrightnees = (value) => {
     setBrightness(value)
@@ -83,7 +84,7 @@ const Controllers = () => {
         <LightModeRoundedIcon />
         <Slider
           size="medium"
-          value={config?.brightness ?? brightness}
+          value={config?.brightness ?? 100}
           onChange={(e) => handleBrightnees(e.target.value)}
           aria-label="Small"
           valueLabelDisplay="auto"
@@ -109,7 +110,7 @@ const Controllers = () => {
         <ContrastTwoToneIcon />
         <Slider
           size="medium"
-          value={config?.contrast ?? contrast}
+          value={config?.contrast ?? 100}
           onChange={(e) => handleContrast(e.target.value)}
           aria-label="Small"
           valueLabelDisplay="auto"
@@ -135,7 +136,7 @@ const Controllers = () => {
         <BrightnessLowIcon />
         <Slider
           size="medium"
-          value={config?.saturation ?? saturation}
+          value={config?.saturation ?? 100}
           onChange={(e) => handleSaturation(e.target.value)}
           aria-label="Small"
           valueLabelDisplay="auto"
@@ -161,7 +162,7 @@ const Controllers = () => {
         <BlurOffIcon />
         <Slider
           size="medium"
-          value={config?.blur ?? blur}
+          value={config?.blur ?? 0}
           onChange={(e) => handleBlur(e.target.value)}
           aria-label="Small"
           valueLabelDisplay="auto"
