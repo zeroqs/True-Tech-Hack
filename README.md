@@ -57,6 +57,7 @@ npm run dev
 
 - Демонстрация проекта: [https://true-tech-hack-jz2tbrc04-zeroqs.vercel.app/](https://true-tech-hack-jz2tbrc04-zeroqs.vercel.app/)
 - Репозиторий проекта: [https://github.com/zeroqs/True-Tech-Hack](https://github.com/zeroqs/True-Tech-Hack)
+- Презентация: [Презентация_compressed.pdf](https://github.com/zeroqs/True-Tech-Hack/files/11102681/_compressed.pdf)
 
 ## Видео-демонстрация проекта
 
@@ -68,7 +69,6 @@ https://user-images.githubusercontent.com/94167692/228571970-f7545a10-f167-4889-
 ### После
 https://user-images.githubusercontent.com/94167692/228571680-0a3fd38d-00ad-425c-b346-7092f8117937.mp4
 
-## Презентация
-[Презентация_compressed.pdf](https://github.com/zeroqs/True-Tech-Hack/files/11102681/_compressed.pdf)
+
 
 
