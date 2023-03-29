@@ -83,10 +83,12 @@ export default function BasicModal({ modal, handleClose }) {
             <div>
               <img
                 style={{
-                  filter: `brightness(${config?.brightness / 100}) 
-            contrast(${config?.contrast / 100}) 
-            saturate(${config?.saturation / 100}) 
-            blur(${config?.blur}px)
+                  filter: `brightness(${
+                    config?.brightness / 100 ?? brightness / 100
+                  }) 
+            contrast(${config?.contrast / 100 ?? contrast / 100}) 
+            saturate(${config?.saturation / 100 ?? saturation / 100}) 
+            blur(${config?.blur ?? blur}px)
             `,
                 }}
                 width={400}
