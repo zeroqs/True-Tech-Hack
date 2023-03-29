@@ -41,5 +41,5 @@ npm run dev
 
 ## Ссылки
 
-- Демонстрация проекта: [https://true-tech-hack-jz2tbrc04-zeroqs.vercel.app/)
+- Демонстрация проекта: [https://true-tech-hack-jz2tbrc04-zeroqs.vercel.app/](https://true-tech-hack-jz2tbrc04-zeroqs.vercel.app/)
 - Репозиторий проекта: [https://github.com/zeroqs/True-Tech-Hack](https://github.com/zeroqs/True-Tech-Hack)
