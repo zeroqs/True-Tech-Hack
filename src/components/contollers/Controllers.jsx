@@ -8,8 +8,11 @@ import Brightness6Icon from '@mui/icons-material/Brightness6'
 import BlurOnIcon from '@mui/icons-material/BlurOn'
 import BlurOffIcon from '@mui/icons-material/BlurOff'
 import {
+  SetSetting,
   useBlur,
   useBrightness,
+  useConfig,
+  useConfigLocal,
   useContrast,
   useSaturation,
 } from '../../context/ControllersContext.jsx'
@@ -20,7 +23,46 @@ const Controllers = () => {
   const { contrast, setContrast } = useContrast()
   const { saturation, setSaturation } = useSaturation()
   const { blur, setBlur } = useBlur()
+  const { configType } = useConfig()
+  const { config, setConfig } = useConfigLocal()
 
+  const handleBrightnees = (value) => {
+    setBrightness(value)
+    setConfig({
+      ...config,
+      brightness: value,
+    })
+  }
+  const handleContrast = (value) => {
+    setContrast(value)
+    setConfig({
+      ...config,
+      contrast: value,
+    })
+  }
+  const handleSaturation = (value) => {
+    setSaturation(value)
+    setConfig({
+      ...config,
+      saturation: value,
+    })
+  }
+  const handleBlur = (value) => {
+    setBlur(value)
+    setConfig({
+      ...config,
+      blur: value,
+    })
+  }
+
+  React.useEffect(() => {
+    const storage = JSON.parse(localStorage.getItem(configType))
+    if (storage) {
+      setConfig(storage)
+    } else {
+      setConfig(false)
+    }
+  }, [configType])
   return (
     <>
       <Typography
@@ -42,8 +84,8 @@ const Controllers = () => {
         <LightModeRoundedIcon />
         <Slider
           size="medium"
-          value={brightness}
-          onChange={(e) => setBrightness(e.target.value)}
+          value={config?.brightness ?? 100}
+          onChange={(e) => handleBrightnees(e.target.value)}
           aria-label="Small"
           valueLabelDisplay="auto"
         />
@@ -68,8 +110,8 @@ const Controllers = () => {
         <ContrastTwoToneIcon />
         <Slider
           size="medium"
-          value={contrast}
-          onChange={(e) => setContrast(e.target.value)}
+          value={config?.contrast ?? 100}
+          onChange={(e) => handleContrast(e.target.value)}
           aria-label="Small"
           valueLabelDisplay="auto"
         />
@@ -94,8 +136,8 @@ const Controllers = () => {
         <BrightnessLowIcon />
         <Slider
           size="medium"
-          value={saturation}
-          onChange={(e) => setSaturation(e.target.value)}
+          value={config?.saturation ?? 100}
+          onChange={(e) => handleSaturation(e.target.value)}
           aria-label="Small"
           valueLabelDisplay="auto"
         />
@@ -120,8 +162,8 @@ const Controllers = () => {
         <BlurOffIcon />
         <Slider
           size="medium"
-          value={blur}
-          onChange={(e) => setBlur(e.target.value)}
+          value={config?.blur ?? 0}
+          onChange={(e) => handleBlur(e.target.value)}
           aria-label="Small"
           valueLabelDisplay="auto"
         />
