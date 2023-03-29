@@ -39,7 +39,6 @@ export default function BasicModal({ modal, handleClose }) {
   const { saturation } = useSaturation()
   const { blur } = useBlur()
   const { config, setConfig } = useConfigLocal()
-  console.log(config)
   const changeConfig = () => {
     addObj()
     if (!object.configType) {
