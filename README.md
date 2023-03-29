@@ -26,7 +26,7 @@
 1. Склонировать репозиторий и перейти в папку проекта
 ```bash
 git clone https://github.com/zeroqs/True-Tech-Hack
-cd YOUR_PROJECT_NAME
+cd True-Tech-Hack
 ```
 
 2. Установить зависимости
