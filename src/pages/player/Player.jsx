@@ -37,6 +37,18 @@ const Player = ({ url }) => {
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
   const [storage, setStorage] = React.useState({})
+  const [isButtonSkip, setIsButtonSkip] = React.useState(false)
+
+  React.useEffect(() => {
+    if (parseInt(progress.played * 100) === 25) {
+      setIsButtonSkip(true)
+    }
+    if (parseInt(progress.played * 100) === 30) {
+      playerRef.current.seekTo(parseFloat('41'))
+      setIsButtonSkip(false)
+    }
+  }, [progress])
+
   React.useEffect(() => {
     const storage = JSON.parse(localStorage.getItem(configType))
     if (storage) {
@@ -95,6 +107,19 @@ const Player = ({ url }) => {
             </Button>
             <BasicModal modal={open} handleClose={handleClose} />
           </Grid>
+          <Grid marginLeft={15}>
+            <Link
+              style={{
+                color: 'inherit',
+                textDecoration: 'inherit',
+              }}
+              to="/safe-video"
+            >
+              <Button variant="contained" color="warning">
+                Видео без опасной сцены ( демо )
+              </Button>
+            </Link>
+          </Grid>
         </Toolbar>
       </AppBar>
       <Toolbar />
@@ -121,6 +146,7 @@ const Player = ({ url }) => {
           />
 
           <PlayerControls
+            isButtonSkip={isButtonSkip}
             changePlayMode={changePlayMode}
             play={play}
             changeVolume={changeVolume}

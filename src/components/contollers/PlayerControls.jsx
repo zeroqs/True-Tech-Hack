@@ -46,10 +46,8 @@ export default ({
   handleSeekChange,
   onSeekMouseDown,
   handleSeekMouseUp,
+  isButtonSkip,
 }) => {
-  const [open, setOpen] = React.useState(false)
-  const handleOpen = () => setOpen(true)
-  const handleClose = () => setOpen(false)
   return (
     <div>
       <div className="controlsWrapper">
@@ -83,6 +81,7 @@ export default ({
             )}
           </IconButton>
         </Grid>
+
         <Grid
           container
           direction="row"
@@ -91,6 +90,11 @@ export default ({
           style={{ padding: 16 }}
         >
           <Grid item xs={12}>
+            {isButtonSkip ? (
+              <Button variant="contained" color="warning">
+                Пропуск сцены
+              </Button>
+            ) : null}
             <Slider
               sx={{
                 root: {
@@ -157,10 +161,6 @@ export default ({
                 sx={useStyles.volumeSlider}
                 onChange={(e) => changeVolume(e.target.value)}
               />
-
-              <Button variant="text" style={{ color: '#fff', marginLeft: 16 }}>
-                <Typography>05:05</Typography>
-              </Button>
             </Grid>
           </Grid>
         </Grid>
